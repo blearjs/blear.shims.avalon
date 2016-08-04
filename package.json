@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "avalon2 定制版",
   "scripts": {
-    "live": "browser-sync start --config bs-config.js",
-    "test": "node ./node_modules/.bin/karma start karma.conf.js --single-run",
-    "prepublish": "npm test"
+    "live": "browser-sync start --config bs-config.js"
   },
   "preferGlobal": false,
   "bin": {},
@@ -37,10 +35,8 @@
   },
   "dependencies": {},
   "peerDependencies": {
-
   },
   "devDependencies": {
-
   },
   "license": "MIT"
 }
