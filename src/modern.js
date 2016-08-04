@@ -5170,33 +5170,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-	function define(definition) {
-	    var $id = definition.$id
+		function define(definition) {
+			var $id = definition.$id
+			if (!$id && avalon.config.debug) {
+				avalon.warn('vm.$id must be specified')
+			}
+			if (avalon.vmodels[$id]) {
+				throw Error('error:[' + $id + '] had defined!')
+			}
+			var vm = $$midway.masterFactory(definition, {}, {
+				pathname: '',
+				id: $id,
+				master: true
+			})
 
-        if (!$id && avalon.config.debug) {
-	        avalon.warn('vm.$id must be specified')
-	    }
+			return avalon.vmodels[$id] = vm
 
-	    if (avalon.vmodels[$id]) {
-	        throw Error('error:[' + $id + '] had defined!')
-	    }
-
-        var $el = definition.$el = document.getElementById(definition.$id);
-        $el.setAttribute('ms-controller', $id);
-	    var vm = $$midway.masterFactory(definition, {}, {
-	        pathname: '',
-	        id: $id,
-	        master: true
-	    });
-
-        vm.$destroy = function () {
-            avalon.vmodels[$id] = null;
-        };
-
-        avalon.vmodels[$id] = vm;
-        avalon.scan($el);
-        return vm;
-	}
+		}
 
 	function arrayFactory(array, old, heirloom, options) {
 	    if (old && old.splice) {
@@ -5275,7 +5265,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this
 	    }
 	}
-	avalon.define = define
+		avalon.define = function(definition) {
+			var $el = definition.$el = document.getElementById(definition.$id);
+			$el.setAttribute('ms-controller', definition.$id);
+			var vm = define(definition);
+
+			vm.$destroy = function () {
+				avalon.vmodels[$id] = null;
+			};
+
+			avalon.scan($el);
+			return vm;
+		};
 
 	module.exports = {
 	    $$midway: $$midway,
