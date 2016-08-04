@@ -21,7 +21,7 @@
 相比原始的 avalon，修改了以下内容
 
 - `define` 的 `$id` 参数为 DOM 元素的 ID
-- 增加了 `$el` 属性，指向当前 DOM 元素
+- 增加了 `$el` 属性，指向当前 DOM 元素，也可以手动传入
 - 增加了 `$destroy` 方法，用于销毁 vm
 - 删除了 `date`、`number`、`currency` 过滤器
 

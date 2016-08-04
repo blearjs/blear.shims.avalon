@@ -5265,18 +5265,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this
 	    }
 	}
-		avalon.define = function(definition) {
-			var $el = definition.$el = document.getElementById(definition.$id);
-			$el.setAttribute('ms-controller', definition.$id);
-			var vm = define(definition);
 
-			vm.$destroy = function () {
-				avalon.vmodels[$id] = null;
-			};
+	avalon.define = function(definition) {
+		var $id = definition.$id  = definition.$id || avalon.makeHashCode();
+		var $el = definition.$el = definition.$el || document.getElementById($id);
 
-			avalon.scan($el);
-			return vm;
+		$el.setAttribute('ms-controller', $id);
+		var vm = define(definition);
+
+		vm.$destroy = function () {
+			avalon.vmodels[$id] = null;
 		};
+
+		avalon.scan($el);
+		return vm;
+	};
 
 	module.exports = {
 	    $$midway: $$midway,

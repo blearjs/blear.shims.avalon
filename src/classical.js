@@ -8067,9 +8067,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this
 	    }
 	}
+
 	avalon.define = function(definition) {
-		var $el = definition.$el = document.getElementById(definition.$id);
-		$el.setAttribute('ms-controller', definition.$id);
+		var $id = definition.$id  = definition.$id || avalon.makeHashCode();
+		var $el = definition.$el = definition.$el || document.getElementById($id);
+
+		$el.setAttribute('ms-controller', $id);
 		var vm = define(definition);
 
 		vm.$destroy = function () {
