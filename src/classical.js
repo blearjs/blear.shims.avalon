@@ -6373,6 +6373,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }
 	        if (!(name in props)) {
+				// @yundanran 修正 ms-class="{a-b-c: d}" 导致的语法错误
+				switch (name) {
+					case 'ms-class':
+					case 'ms-attr':
+						value = value.replace(/(\{|,)\s*([^:]*):/g, '$1\'$2\':');
+						break;
+				}
 	            props[name] = value
 	        }
 	    })
