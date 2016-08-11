@@ -1,6 +1,6 @@
 {
   "name": "blear.shims.avalon",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "avalon2 定制版",
   "scripts": {
     "live": "browser-sync start --config bs-config.js"
