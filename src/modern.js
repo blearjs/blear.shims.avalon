@@ -4115,6 +4115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				switch (name) {
 					case 'ms-class':
 					case 'ms-attr':
+					case 'ms-css':
 						value = value.replace(/(\{|,)\s*([^:]*):/g, '$1\'$2\':');
 						break;
 				}
