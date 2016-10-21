@@ -8042,11 +8042,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var __array__ = {
 	    set: function (index, val) {
-	        if (((index >>> 0) === index) && this[index] !== val) {
+	        if (this[index] !== val) {
 	            if (index > this.length) {
-	                throw Error(index + 'set方法的第一个参数不能大于原数组长度')
+	                this.length = index + 1;
 	            }
-	            this.splice(index, 1, val)
+	            this.splice(index, 1, val);
 	        }
 	    },
 	    contains: function (el) { //判定是否包含

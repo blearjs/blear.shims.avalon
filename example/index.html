@@ -21,8 +21,12 @@
 </head>
 <body ontouchstart="">
 
-<div id="demo1">{{@demo1}}</div>
-<div id="demo2">{{@demo2}}</div>
+<div id="demo2">{{@demo2}}
+
+<ul>
+    <li ms-for="item in @array">{{item}}</li>
+</ul>
+</div>
 
 <script src="/src/classical.js"></script>
 <script>
@@ -30,9 +34,10 @@
 //        $id: 'demo1',
 //        demo1: '呵呵'
 //    });
-    avalon.define({
+    var vm = avalon.define({
         $el: document.getElementById('demo2'),
-        demo2: '哈哈'
+        demo2: '哈哈',
+        array: []
     });
 </script>
 
