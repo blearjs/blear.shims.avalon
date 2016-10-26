@@ -5279,12 +5279,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		var $el = definition.$el = definition.$el || document.getElementById($id);
 
 		$el.setAttribute('ms-controller', $id);
-		var vm = define(definition);
-
-		vm.$destroy = function () {
+		definition.$destroy = function () {
 			avalon.vmodels[$id] = null;
 		};
 
+		var vm = define(definition);
 		avalon.scan($el);
 		return vm;
 	};
