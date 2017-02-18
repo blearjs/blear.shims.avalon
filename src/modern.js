@@ -1939,10 +1939,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      cid: 1
 	  }
 
-	var rneedQuote = /[W-]/
 	var quote = avalon.quote
 	function fixKey(k) {
-	    return (rneedQuote.test(k) || keyMap[k]) ? quote(k) : k
+	    return quote(k)
 	}
 
 	function stringify(obj) {
